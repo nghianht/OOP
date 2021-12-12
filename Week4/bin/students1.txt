@@ -1,0 +1,19 @@
+4
+0
+M01
+Nguyen Van An
+5.0
+1
+M02
+Tran Thi Binh
+6.0
+2
+0
+M03
+Vu Van Chinh
+10
+1
+M04
+Truong Gia Binh
+8.0
+2

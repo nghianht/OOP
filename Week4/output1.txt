@@ -1,0 +1,2 @@
+Student [id=M03, name=Vu Van Chinh, score=10.0]
+StudentPrior [n_score=2, toString()=Student [id=M04, name=Truong Gia Binh, score=8.0]]

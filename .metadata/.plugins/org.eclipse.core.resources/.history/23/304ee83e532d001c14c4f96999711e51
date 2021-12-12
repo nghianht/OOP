@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+public class Test {
+	public static void main(String[] args) {
+		int ngay, thang, nam, ngaytruoc, ngaysau, namsau, namtruoc,	thangsau, thangtruoc;
+		do {
+			Scanner s = new Scanner(System.in);
+			ngay = s.nextInt();
+			thang = s.nextInt();
+			nam  = s.nextInt();
+			System.out.println("nhap vao ngay thang nam");
+	       }
+		while(ngay < 1 || thang < 1 || thang > 12);
+		switch(thang)
+		{
+			case 1:
+				if( ngay==1 )
+				{
+					namtruoc = nam - 1;
+					
+					System.out.println("Ngaytruoc la : 31-12-" + namtruoc);
+					System.out.println("Ngaysau la : 2-1" + nam );
+				}
+				else
+				if(ngay!=31)
+				{
+					ngaytruoc = ngay - 1;
+					ngaysau = ngay + 1	;
+					System.out.println("Ngaytruoc la : " + ngaytruoc + thang +  nam );
+					System.out.println("Ngaysau la : " + ngaysau + thang + nam);
+				}
+				else
+					thangsau = thang + 1;
+					System.out.println("Ngaytruoc la :" + "30-1-" + nam );
+					System.out.println("Ngaysau la : " + "1-2-" + nam);
+		 
+	}
+	}
+}
+
+		
+

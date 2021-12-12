@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class Test {
+	public static void main(String[] args) {
+		int ngay, thang, nam, ngaytruoc, ngaysau, namsau, namtruoc;	thangsau, thangtruoc;
+		do {
+			Scanner s = new Scanner(System.in);
+			ngay = s.nextInt();
+			thang = s.nextInt();
+			nam  = s.nextInt();
+			System.out.println("nhap vao ngay thang nam");
+	       }
+		while(ngay < 1 || thang < 1 || thang > 12);
+		switch(thang)
+		{
+			case 1:
+				if( ngay=1 )
+				{
+					
+				}
+			
+		}
+		 
+			
+		
+}

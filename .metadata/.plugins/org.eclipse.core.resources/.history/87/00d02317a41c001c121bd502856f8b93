@@ -1,0 +1,92 @@
+import java.util.ArrayList;
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+public class ComputerManager {
+	
+	public static ArrayList<Computer> readFileObject(String filename){
+		ArrayList<Computer> com = null;
+		ObjectInputStream obj = null;
+		try {
+			obj = new ObjectInputStream(new FileInputStream(filename));
+			com = new ArrayList<>();
+			while(true) {
+				try {
+					
+					Computer c = (Computer) obj.readObject();
+					com.add(c);
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		} 
+		catch(EOFException endoffile) {
+			return com;
+		}
+		catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return com;
+	}
+	
+	public static void output(ArrayList<Computer> com) {
+		for (Computer computer : com) {
+			System.out.println(computer.toString());
+		}
+	}
+	
+	public static ArrayList<Computer> findMax(ArrayList<Computer> com){
+		double max = com.get(0).getPrice();
+		ArrayList<Computer> maxlist = new ArrayList<>();
+		for (Computer computer : com) {
+			if(computer.getPrice() > max)
+				max = computer.getPrice();
+		}
+		for (Computer computer : com) {
+			if(computer.getPrice() == max)
+				maxlist.add(computer);
+		}
+		return maxlist;
+	}
+	
+	public static void writeFileObject(String filename, ArrayList<Computer> com) {
+		ObjectOutputStream opt = null;
+		try {
+			opt = new ObjectOutputStream(new FileOutputStream(filename));
+			for (Computer computer : com) {
+				opt.writeObject(computer);
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				opt.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public static void main(String[] args) {
+		ArrayList<Computer> com = readFileObject("C:\\Users\\Admin\\eclipse-workspace\\Week4\\src\\computer.dat");
+		output(com);
+		ArrayList<Computer> maxlist = findMax(com);
+		writeFileObject("output.dat",com);
+		writeFileObject("output1.dat",maxlist);
+		
+	}
+}
